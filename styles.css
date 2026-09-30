@@ -1,0 +1,258 @@
+/* =========================================================
+   MISHRA TOURS AND TRAVELS - LUXURY STYLESHEET
+   Brand Colors: Deep Blue (#06101E, #0B192C), Gold Accents (#D4AF37, #F3CF67)
+   Theme: Premium, Trustworthy, Modern, Luxury Experience
+   ========================================================= */
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: #06101E;
+  }
+  body {
+    background-color: transparent !important;
+    position: relative;
+  }
+}
+
+/* =========================================================
+   GLOBAL FULL-PAGE SCROLL CANVAS ANIMATION STYLES
+   ========================================================= */
+html, body {
+  overflow-x: clip;
+}
+
+#global-scroll-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  pointer-events: none;
+  display: block;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+}
+
+.global-scroll-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(6, 16, 30, 0.12) 0%, rgba(6, 16, 30, 0.25) 100%);
+}
+
+.page-content-wrapper {
+  position: relative;
+  z-index: 10;
+}
+
+
+/* Custom Luxury Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #06101E;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #D4AF37 0%, #B8860B 100%);
+  border-radius: 5px;
+  border: 2px solid #06101E;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #F3CF67;
+}
+
+/* Gold Metallic Foil Gradient Text */
+.gold-gradient-text {
+  background: linear-gradient(135deg, #FFF0B3 0%, #D4AF37 40%, #EDC967 70%, #AA771C 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: inline-block;
+}
+
+/* Gold Border Glow Animation */
+.gold-glow-border {
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.15);
+  transition: all 0.3s ease;
+}
+
+.gold-glow-border:hover {
+  border-color: rgba(212, 175, 55, 0.8);
+  box-shadow: 0 0 30px rgba(212, 175, 55, 0.35);
+}
+
+/* Hero Slide Transition Styles */
+.hero-bg-slide {
+  transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1), transform 8s cubic-bezier(0.25, 1, 0.5, 1);
+  will-change: opacity, transform;
+}
+
+.hero-bg-slide.active-slide {
+  opacity: 1 !important;
+  transform: scale(1.04);
+}
+
+.hero-bg-slide.inactive-slide {
+  opacity: 0 !important;
+  transform: scale(1);
+}
+
+/* Active Navigation Link Underline */
+.nav-link {
+  position: relative;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -4px;
+  left: 50%;
+  background: linear-gradient(90deg, #F3CF67, #D4AF37);
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+  border-radius: 2px;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+/* Glassmorphism Card Style */
+.glass-panel {
+  background: rgba(11, 25, 44, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Service Card Hover Glow Micro-Interactions */
+.service-card {
+  transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s ease, border-color 0.4s ease;
+}
+
+.service-card:hover {
+  box-shadow: 0 20px 35px -10px rgba(0, 0, 0, 0.5), 0 0 25px rgba(212, 175, 55, 0.2);
+}
+
+/* Destination Card Zoom & Lift */
+.dest-card {
+  transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s ease, border-color 0.4s ease;
+}
+
+.dest-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.7), 0 0 25px rgba(212, 175, 55, 0.25);
+}
+
+/* Animations */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-down {
+  animation: fadeInDown 0.8s ease-out forwards;
+}
+
+@keyframes pulseGold {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 0 16px rgba(212, 175, 55, 0);
+  }
+}
+
+.pulse-gold {
+  animation: pulseGold 2.5s infinite;
+}
+
+/* Modal Smooth Entrance */
+#booking-modal.show {
+  display: flex !important;
+  animation: modalFadeIn 0.3s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Toast Notification Styles */
+.toast-notice {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%) translateY(100px);
+  background: #0B192C;
+  border: 1px solid #D4AF37;
+  color: #FFFFFF;
+  padding: 14px 24px;
+  border-radius: 14px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5), 0 0 20px rgba(212, 175, 55, 0.3);
+  font-size: 14px;
+  font-weight: 600;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  opacity: 0;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.toast-notice.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Ensure clean inputs */
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(0.8) sepia(100%) saturate(500%) hue-rotate(10deg);
+  cursor: pointer;
+}
+
+/* Testimonial Slider Enhancements */
+#testimonials-track {
+  will-change: transform;
+}
+
+.testimonial-card {
+  transition: transform 0.35s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.35s ease, border-color 0.35s ease;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(212, 175, 55, 0.6);
+  box-shadow: 0 20px 35px -10px rgba(0, 0, 0, 0.6), 0 0 25px rgba(212, 175, 55, 0.2);
+}
+
+
+
+
